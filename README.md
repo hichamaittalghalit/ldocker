@@ -1,6 +1,6 @@
 # L-Docker
 
-1 - Clone "ldocker" inside your PHP project
+1 - Clone `ldocker`
 
     git clone https://github.com/hichamaittalghalit/ldocker docker
 
