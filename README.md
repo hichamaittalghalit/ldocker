@@ -1,6 +1,6 @@
 # L-Docker
 
-1 - Clone "chamhi-docker" inside your PHP project:
+1 - Clone "chamhi-docker" inside your PHP project
 
     git clone https://github.com/hichamaittalghalit/ldocker docker
 
@@ -9,7 +9,7 @@
 
     cd docker && cp .env.example .env
 
-3 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service):
+3 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service)
     
     systemctl stop apache2
     
@@ -17,12 +17,14 @@ OR uninstall it
     
     apt remove --purge apache2 -y
 
-## NOTICE
-
-Change your `mysql` database credentials in `.env` file:
+4 - Change your `mysql` database credentials in `.env` file
 
     MYSQL_PASSWORD=xxxxxx
     MYSQL_ROOT_PASSWORD=xxxxxx
+
+5 - GO FOR IT :P 
+
+    sh up.sh
 
 ## SCRIPTS
 
