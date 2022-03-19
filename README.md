@@ -7,7 +7,7 @@
 
 2 - Enter the "docker" folder and rename env-example to .env.
 
-    cd docker && cp env-example .env
+    cd docker && cp .env.example .env
 
 3 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service):
     
