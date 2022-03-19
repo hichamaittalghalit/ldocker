@@ -10,8 +10,6 @@ volumes:
     driver: ${VOLUMES_DRIVER}
   memcached:
     driver: ${VOLUMES_DRIVER}
-  docker-in-docker:
-    driver: ${VOLUMES_DRIVER}
 
 services:
 
@@ -132,21 +130,14 @@ services:
           - no_proxy
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
-        - docker-in-docker:/certs/client
         - ./php-worker/supervisord.d:/etc/supervisord.d
       extra_hosts:
         - "dockerhost:${DOCKER_HOST_IP}"
       ports:
         - "${WORKSPACE_SSH_PORT}:22"
-        - "${WORKSPACE_BROWSERSYNC_HOST_PORT}:3000"
-        - "${WORKSPACE_BROWSERSYNC_UI_HOST_PORT}:3001"
-        - "${WORKSPACE_VUE_CLI_SERVE_HOST_PORT}:8080"
-        - "${WORKSPACE_VUE_CLI_UI_HOST_PORT}:8000"
-        - "${WORKSPACE_ANGULAR_CLI_SERVE_HOST_PORT}:4200"
       tty: true
       environment:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
-        - DOCKER_HOST=tcp://docker-in-docker:2376
         - DOCKER_TLS_VERIFY=1
         - DOCKER_TLS_CERTDIR=/certs
         - DOCKER_CERT_PATH=/certs/client
@@ -154,8 +145,6 @@ services:
       networks:
         - frontend
         - backend
-      links:
-        - docker-in-docker
 
 ### PHP-FPM ##############################################
     php-fpm:
@@ -240,7 +229,6 @@ services:
       volumes:
         - ./php-fpm/php${PHP_VERSION}.ini:/usr/local/etc/php/php.ini
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}${APP_CODE_CONTAINER_FLAG}
-        - docker-in-docker:/certs/client
       ports:
         - "${PHP_FPM_XDEBUG_PORT}:9003"
       expose:
@@ -249,7 +237,6 @@ services:
         - "dockerhost:${DOCKER_HOST_IP}"
       environment:
         - PHP_IDE_CONFIG=${PHP_IDE_CONFIG}
-        - DOCKER_HOST=tcp://docker-in-docker:2376
         - DOCKER_TLS_VERIFY=1
         - DOCKER_TLS_CERTDIR=/certs
         - DOCKER_CERT_PATH=/certs/client
@@ -258,8 +245,6 @@ services:
         - workspace
       networks:
         - backend
-      links:
-        - docker-in-docker
 
 ### PHP Worker ############################################
     php-worker:
@@ -368,16 +353,3 @@ services:
       networks:
         - backend
 
-### Docker-in-Docker ################################################
-    docker-in-docker:
-      image: docker:20.10-dind
-      environment:
-        DOCKER_TLS_SAN: DNS:docker-in-docker
-      privileged: true
-      volumes:
-        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
-        - docker-in-docker:/certs/client
-      expose:
-        - 2375
-      networks:
-        - backend
