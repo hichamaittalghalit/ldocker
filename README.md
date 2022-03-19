@@ -17,6 +17,13 @@ OR uninstall it
     
     apt remove --purge apache2 -y
 
+## NOTICE
+
+Change your `mysql` database credentials in `.env` file:
+
+    MYSQL_PASSWORD=xxxxxx
+    MYSQL_ROOT_PASSWORD=xxxxxx
+
 ## SCRIPTS
 
 1 - Run containers
