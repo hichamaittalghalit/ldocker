@@ -1,6 +1,6 @@
 # L-Docker
 
-1 - Clone "chamhi-docker" inside your PHP project
+1 - Clone "ldocker" inside your PHP project
 
     git clone https://github.com/hichamaittalghalit/ldocker docker
 
@@ -25,6 +25,10 @@ OR uninstall it
 5 - GO FOR IT :P 
 
     sh up.sh
+
+6 - Create projects folder to put your projects into
+
+    cd  && mkdir projects
 
 ## SCRIPTS
 
