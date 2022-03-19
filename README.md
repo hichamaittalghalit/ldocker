@@ -12,6 +12,10 @@
 3 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service):
     
     systemctl stop apache2
+    
+OR uninstall it
+    
+    apt remove --purge apache2 -y
 
 ## SCRIPTS
 
