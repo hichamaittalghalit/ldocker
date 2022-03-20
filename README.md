@@ -1,21 +1,21 @@
 # L-Docker
 
-1 - Clone `ldocker`
-
-    git clone https://github.com/hichamaittalghalit/ldocker docker
-
-
-2 - Enter the "docker" folder and rename env-example to .env.
-
-    cd docker && cp .env.example .env
-
-3 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service)
+1 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service)
     
     systemctl stop apache2
     
 OR uninstall it
     
     apt remove --purge apache2 -y
+
+2 - Clone `ldocker`
+
+    git clone https://github.com/hichamaittalghalit/ldocker docker
+
+
+3 - Enter the "docker" folder and rename env-example to .env.
+
+    cd docker && cp .env.example .env
 
 4 - Change your `mysql` database credentials in `.env` file
 
@@ -25,10 +25,6 @@ OR uninstall it
 5 - GO FOR IT :P 
 
     sh up.sh
-
-6 - Create projects folder to put your projects into
-
-    cd  && mkdir projects
 
 ## SCRIPTS
 
