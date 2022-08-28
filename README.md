@@ -24,7 +24,7 @@ OR uninstall it
 
 5 - GO FOR IT :P 
 
-    sh up.sh
+    sh build.sh
 
 ## SCRIPTS
 
