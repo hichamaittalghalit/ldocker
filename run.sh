@@ -1,1 +1,1 @@
-docker-compose exec workspace bash
+sudo docker-compose exec workspace bash
