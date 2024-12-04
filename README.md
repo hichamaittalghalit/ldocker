@@ -26,13 +26,13 @@ OR uninstall it
 
 5 - GO FOR IT :P
 
-    sh build.sh
+    docker compose build redis mysql php-fpm workspace php-worker nginx
 
-## SCRIPTS
+## CMD
 
 1 - Run containers
 
-    sh up.sh
+    docker compose down redis mysql php-fpm workspace php-worker nginx
 
 2 - Stop containers
 
@@ -40,8 +40,5 @@ OR uninstall it
 
 3 - Enter the Workspace container
 
-    sh run.sh
+    docker compose exec workspace bash
 
-4 - Stop & Run Containers, & Enter To Workspace Containers
-
-    sh reload.sh
