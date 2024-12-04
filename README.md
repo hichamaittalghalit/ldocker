@@ -32,11 +32,11 @@ OR uninstall it
 
 1 - Run containers
 
-    docker compose down redis mysql php-fpm workspace php-worker nginx
+    docker compose up -d redis mysql php-fpm workspace php-worker nginx
 
 2 - Stop containers
 
-    sh stop.sh
+    docker compose stop redis mysql php-fpm workspace php-worker nginx
 
 3 - Enter the Workspace container
 
