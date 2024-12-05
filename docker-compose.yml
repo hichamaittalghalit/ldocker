@@ -366,7 +366,6 @@ services:
       networks:
         - frontend
         - backend
-      extra_hosts:
 
 ### MySQL ################################################
     mysql:
