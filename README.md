@@ -1,5 +1,3 @@
-based on https://github.com/laradock/laradock
-
 # L-Docker
 
 1 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service)
