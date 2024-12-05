@@ -1,3 +1,5 @@
+based on https://github.com/laradock/laradock
+
 # L-Docker
 
 1 - Stop `apache2` service if it runs on your server Linux: (same for `nginx` service)
@@ -24,22 +26,19 @@ OR uninstall it
 
 5 - GO FOR IT :P
 
-    sh build.sh
+    docker compose build redis mysql php-fpm workspace php-worker nginx
 
-## SCRIPTS
+## CMD
 
 1 - Run containers
 
-    sh up.sh
+    docker compose up -d redis mysql php-fpm workspace php-worker nginx
 
 2 - Stop containers
 
-    sh stop.sh
+    docker compose stop redis mysql php-fpm workspace php-worker nginx
 
 3 - Enter the Workspace container
 
-    sh run.sh
+    docker compose exec workspace bash
 
-4 - Stop & Run Containers, & Enter To Workspace Containers
-
-    sh reload.sh
