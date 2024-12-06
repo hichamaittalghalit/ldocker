@@ -1,12 +1,8 @@
 networks:
-  frontend:
-    driver: ${NETWORKS_DRIVER}
-  backend:
+  mynetwork:
     driver: ${NETWORKS_DRIVER}
 volumes:
   mysql:
-    driver: ${VOLUMES_DRIVER}
-  postgres:
     driver: ${VOLUMES_DRIVER}
   redis:
     driver: ${VOLUMES_DRIVER}
@@ -154,8 +150,7 @@ services:
         - DOCKER_CERT_PATH=/certs/client
         - CHOKIDAR_USEPOLLING=true
       networks:
-        - frontend
-        - backend
+        - mynetwork
 
 ### PHP-FPM ##############################################
     php-fpm:
@@ -269,7 +264,7 @@ services:
       depends_on:
         - workspace
       networks:
-        - backend
+        - mynetwork
 
 ### PHP Worker ############################################
     php-worker:
@@ -329,7 +324,7 @@ services:
       environment:
           - TZ=${WORKSPACE_TIMEZONE}
       networks:
-        - backend
+        - mynetwork
 
 ### NGINX Server #########################################
     nginx:
@@ -354,8 +349,7 @@ services:
       depends_on:
         - php-fpm
       networks:
-        - frontend
-        - backend
+        - mynetwork
 
 ### MySQL ################################################
     mysql:
@@ -376,7 +370,7 @@ services:
       ports:
         - "${MYSQL_PORT}:3306"
       networks:
-        - backend
+        - mynetwork
 
 
 ### Redis ################################################
@@ -389,5 +383,5 @@ services:
       ports:
         - "${REDIS_PORT}:6379"
       networks:
-        - backend
+        - mynetwork
 
